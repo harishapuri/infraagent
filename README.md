@@ -1,8 +1,31 @@
-# Infra — InfraAgent plane
+# CICD_Compliance — InfraAgent stay-up
 
-Predictive stay-up and rollout (paper 1239) as its **own repo**. Failure probability φ, capacity deficit κ, and posture Ω still join CRC η and ZeroGuard Ψ on the **unified framework** bus. One DSA pick: go / wait / stop. RPA suggestions are never auto-applied.
+GitHub: [harishapuri/CICD_Compliance](https://github.com/harishapuri/CICD_Compliance)
 
-Sibling products: [`CICD`](../CICD) (rules) and [`zeroguard`](../zeroguard) (trust). Shared library: [`unified_framework`](../unified_framework). Snapshot: `vendor/unified_framework`.
+Predictive stay-up and rollout (InfraAgent, paper 1239). Failure probability φ, capacity deficit κ, and posture Ω still join CRC η and ZeroGuard Ψ on the unified bus. One DSA pick: go / wait / stop. RPA suggestions are never auto-applied. Traffic stays on blue unless the fused pick is go.
+
+Python module name after clone is `infra`.
+
+```bash
+git clone https://github.com/harishapuri/CICD_Compliance.git
+cd CICD_Compliance
+```
+
+## Related repos
+
+| Repo | Plane |
+| --- | --- |
+| [unifiedframework](https://github.com/harishapuri/unifiedframework) | Fused CRC × ZeroGuard × InfraAgent gate (source of `vendor/unified_framework`) |
+| [infraagent](https://github.com/harishapuri/infraagent) | CRC / CI-CD rules (η) |
+| [ZeroGuard](https://github.com/harishapuri/ZeroGuard) | Trust / ZTA (Ψ) |
+
+This repo runs alone via `vendor/unified_framework`. To use a live checkout instead:
+
+```bash
+export UNIFIED_FRAMEWORK=/path/to/unifiedframework
+```
+
+A sibling folder named `unified_framework` (same parent directory) wins over vendor.
 
 ## What this repo owns
 
@@ -11,22 +34,25 @@ Sibling products: [`CICD`](../CICD) (rules) and [`zeroguard`](../zeroguard) (tru
 - φ_1h / φ_6h / φ_24h, κ, Ω
 - DSA gate + suggest-only hold / scale / canary / rollback
 
-Traffic stays on blue unless the fused pick is go.
-
 ## Demo and automation
-
-```bash
-cd infra
-python3 -m infra.demo          # http://127.0.0.1:8872/
-python3 -m infra.automate      # all 7 stories, exit 1 if a pick drifts
-```
 
 Hot traffic on a clean scan is the stay-up story: the page should show **Undo**, not a green CRC-only pass.
 
-## Run
+```bash
+python3 -m infra.demo          # http://127.0.0.1:8872/
+python3 -m infra.automate      # exit 1 if a pick drifts
+```
+
+| Story | Expected pick |
+| --- | --- |
+| All clear | Go (`ALLOW`) |
+| Almost full / errors rising | Wait (`WARN`) |
+| Unsafe setup / open door | Stop (`BLOCK_DEPLOYMENT`) |
+| Safe setup, bad traffic / site down | Undo (`ROLLBACK`) |
+
+## CLI
 
 ```bash
-cd infra
 python3 -m infra vendor/unified_framework/examples/checkov_pass.json \
   --telemetry vendor/unified_framework/examples/telemetry_hot.json \
   --focus
@@ -38,17 +64,13 @@ python3 -m infra vendor/unified_framework/examples/checkov_pass.json \
 
 `--enforce` exits `2` on BLOCK. Default is shadow.
 
-```bash
-export UNIFIED_FRAMEWORK=/path/to/unified_framework
-```
-
-A sibling `../unified_framework` wins over vendor.
-
-## Tests
+## Tests and CI
 
 ```bash
 python3 -m unittest tests.test_infra tests.test_automate -v
 ```
+
+`.github/workflows/gate.yml` runs unit tests, `python3 -m infra.automate`, and a shadow pass fixture on every push and pull request.
 
 ## Layout
 
