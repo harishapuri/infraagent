@@ -1,11 +1,11 @@
 # Plan — InfraAgent stay-up plane
 
-GitHub: [harishapuri/infraagent](https://github.com/harishapuri/infraagent)
+GitHub: [harishapuri/CICD_Compliance](https://github.com/harishapuri/CICD_Compliance)
 
 Implementation plan for the **InfraAgent (1239)** plane as its own product, still fused with CRC and ZeroGuard.
 
 1. **InfraAgent (1239)** — this repo: predictive stay-up and rollout
-2. **CRC (207)** — [CICD_Compliance](https://github.com/harishapuri/CICD_Compliance)
+2. **CRC (207)** — [infraagent](https://github.com/harishapuri/infraagent)
 3. **ZeroGuard (2143)** — [ZeroGuard](https://github.com/harishapuri/ZeroGuard)
 
 Shared library: [unifiedframework](https://github.com/harishapuri/unifiedframework), vendored at `vendor/unified_framework`.

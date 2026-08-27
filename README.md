@@ -1,14 +1,14 @@
-# infraagent — InfraAgent stay-up
+# CICD_Compliance — InfraAgent stay-up
 
-GitHub: [harishapuri/infraagent](https://github.com/harishapuri/infraagent)
+GitHub: [harishapuri/CICD_Compliance](https://github.com/harishapuri/CICD_Compliance)
 
 Predictive stay-up and rollout (InfraAgent, paper 1239). Failure probability φ, capacity deficit κ, and posture Ω still join CRC η and ZeroGuard Ψ on the unified bus. One DSA pick: go / wait / stop. RPA suggestions are never auto-applied. Traffic stays on blue unless the fused pick is go.
 
 Python module name after clone is `infra`.
 
 ```bash
-git clone https://github.com/harishapuri/infraagent.git
-cd infraagent
+git clone https://github.com/harishapuri/CICD_Compliance.git
+cd CICD_Compliance
 ```
 
 ## Related repos
@@ -17,7 +17,7 @@ cd infraagent
 | --- | --- |
 | [unifiedframework](https://github.com/harishapuri/unifiedframework) | Fused CRC × ZeroGuard × InfraAgent gate (source of `vendor/unified_framework`) |
 | [MAWS](https://github.com/harishapuri/MAWS) | Hive orchestrator (named agents, stay-on-blue) |
-| [CICD_Compliance](https://github.com/harishapuri/CICD_Compliance) | CRC / CI-CD rules (η) |
+| [infraagent](https://github.com/harishapuri/infraagent) | CRC / CI-CD rules (η) |
 | [ZeroGuard](https://github.com/harishapuri/ZeroGuard) | Trust / ZTA (Ψ) |
 
 This repo runs alone via `vendor/unified_framework`. To use a live checkout instead:
