@@ -20,7 +20,8 @@ CRC η · ZeroGuard Ψ                         ← still computed
                 ↓
 Typed bus → DSA go / wait / stop
                 ↓
-Traffic switch LAST · SHA-256 audit · shadow unless --enforce
+Traffic *intent* LAST (apply false) · SHA-256 audit
+actor + evidence export · shadow unless --enforce
 ```
 
 Traffic stays on **blue** unless the fused pick is go. RPA suggestions are never auto-applied.
@@ -64,6 +65,7 @@ flowchart TB
   BLUE --> AUD[SHA-256 audit]
   HOLD --> AUD
   GREEN --> AUD
+  AUD --> INT[Traffic intent apply false]
 ```
 
 ## InfraAgent complete flow (paper 1239)
