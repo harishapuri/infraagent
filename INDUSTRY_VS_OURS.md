@@ -1,6 +1,6 @@
 # Industry deploy vs our stay-up gate
 
-GitHub: [harishapuri/CICD_Compliance](https://github.com/harishapuri/CICD_Compliance)
+GitHub: [harishapuri/infraagent](https://github.com/harishapuri/infraagent)
 
 **Northstar Bank** ships a customer chatbot with two copies: **blue** (customers now) and **green** (empty new assistant). This repo is the **stay-up** plane: will the chat graph fail, or will we run out of room?
 
