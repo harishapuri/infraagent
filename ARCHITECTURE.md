@@ -1,12 +1,12 @@
 # Architecture — InfraAgent stay-up plane
 
-GitHub: [harishapuri/CICD_Compliance](https://github.com/harishapuri/CICD_Compliance)
+GitHub: [harishapuri/infraagent](https://github.com/harishapuri/infraagent)
 
 This repo owns the **stay-up** plane (InfraAgent, paper 1239). Question: will it fail soon, or will we run out of room?
 
 Scoring still runs the **fused** gate. CRC η, ZeroGuard Ψ, and InfraAgent Ω share one bus and one go / wait / stop. `--focus` only changes what the CLI prints. Library source: [unifiedframework](https://github.com/harishapuri/unifiedframework) (vendored here as `vendor/unified_framework`).
 
-Sibling planes: [infraagent](https://github.com/harishapuri/infraagent) (rules), [ZeroGuard](https://github.com/harishapuri/ZeroGuard) (trust).
+Sibling planes: [CICD_Compliance](https://github.com/harishapuri/CICD_Compliance) (rules), [ZeroGuard](https://github.com/harishapuri/ZeroGuard) (trust).
 
 ## This repo in the loop
 
